@@ -1,0 +1,37 @@
+CODE:
+CREATE DATABASE CompanyDB;
+USE CompanyDB;
+CREATE TABLE Employees (
+    EmployeeID INT PRIMARY KEY,
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+    Department VARCHAR(50),
+    Salary DECIMAL(10, 2)
+);
+INSERT INTO Employees (EmployeeID, FirstName, LastName, Department, Salary) VALUES
+(1, 'Alice', 'Johnson', 'HR', 55000.00),
+(2, 'Bob', 'Smith', 'Finance', 65000.00),
+(3, 'Charlie', 'Lee', 'IT', 70000.00),
+(4, 'David', 'Brown', 'IT', 72000.00),
+(5, 'Eve', 'Davis', 'Marketing', 58000.00),
+(6, 'Frank', 'Wilson', 'Finance', 67000.00),
+(7, 'Grace', 'Clark', 'HR', 53000.00),
+(8, 'Hank', 'Adams', 'IT', 75000.00),
+(9, 'Ivy', 'Miller', 'Marketing', 60000.00),
+(10, 'Jack', 'Taylor', 'HR', 54000.00);
+-- Select all employees
+SELECT * FROM Employees;
+
+-- Select employees in the IT department
+SELECT * FROM Employees WHERE Department = 'IT';
+
+-- Select names and salaries of employees earning more than 60000
+SELECT FirstName, LastName, Salary FROM Employees WHERE Salary > 60000;
+INSERT INTO Employees (EmployeeID, FirstName, LastName, Department, Salary)
+VALUES (11, 'Karen', 'White', 'Sales', 61000.00);
+-- Increase salary by 5% for all employees in the HR department
+UPDATE Employees
+SET Salary = Salary * 1.05
+WHERE Department = 'HR';
+-- Delete employee with ID 3
+DELETE FROM Employees WHERE EmployeeID=3;
